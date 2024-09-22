@@ -3,30 +3,30 @@
 ## 1. Desarrollar un algoritmo que imprima de manera ascendente los valores (todos del mismo tipo) de un diccionario.
 ```python
 def imprimir_valores_ascendentes(diccionario:dict):
-  valores_diccionario = list(diccionario.values())
-  valores_diccionario.sort()
+  valores_diccionario = list(diccionario.values()) #volver lista los valores del diccionario
+  valores_diccionario.sort() #ordenar los valores
   for i in valores_diccionario:
     print(i)
   return
 
 if __name__== "__main__":
-  diccionario = {"veintiuno":"u", "nueve":"i", "cinco":"e", "uno": "a", "quince":"o"}
+  diccionario = {"veintiuno":"u", "nueve":"i", "cinco":"e", "uno": "a", "quince":"o"} #diccionario con el número de la posición en el alfabeto de cada vocal 
   valores_organizados_ascendente = imprimir_valores_ascendentes(diccionario)
 ```
 ## 2. Desarrollar una función que reciba dos diccionarios como parámetros y los mezcle, es decir, que se construya un nuevo diccionario con las llaves de los dos diccionarios; si hay una clave repetida en ambos diccionarios, se debe asignar el valor que tenga la clave en el primer diccionario.
 ```python
 def mezclar_diccionarios(dic_1:dict,dic_2:dict):
-  copia_diccionario_1 = dic_1.copy()
-  diccionario_mezclado = copia_diccionario_1
+  copia_diccionario_1 = dic_1.copy() # hacer una copia del diccionario 1
+  diccionario_mezclado = copia_diccionario_1 
 
-  for i,j in dic_2.items():
+  for i,j in dic_2.items(): # key, value respectivamente
     if i not in dic_1:
-      diccionario_mezclado[i]=j
+      diccionario_mezclado[i]=j # se asigna el valor j a la llave respectiva (i)
   return diccionario_mezclado
 
 if __name__== "__main__":
-  dic_1 = {"veintiuno":"u", "nueve":"i", "cinco":"e", "uno": "a", "quince":"o"}
-  dic_2 = {"dos":"b","seis":"f","diecinueve":"s","dieciocho":"r","cinco":"e"}
+  dic_1 = {"veintiuno":"u", "nueve":"i", "cinco":"e", "uno": "a", "quince":"o"} #diccionario con el número de la posición en el alfabeto de cada vocal
+  dic_2 = {"dos":"b","seis":"f","diecinueve":"s","dieciocho":"r","cinco":"e"} #diccionario con el número de la posición en el alfabeto de cada letra
   mezcla_diccionarios = mezclar_diccionarios(dic_1,dic_2)
   print(mezcla_diccionarios)
 ```
@@ -65,10 +65,10 @@ if __name__== "__main__":
 import json
 
 def evaluar_deporte(data,deporte):
-  nombres_completos = []
-  for k,v in data.items():
-    if deporte in v["deportes"]:
-      nombres_completos.append((v["nombres"], v["apellidos"]))
+  nombres_completos = [] #crear una lista para guardar los nombres completos que cumplen el condicional
+  for k,v in data.items(): #key, value respectivamente
+    if deporte in v["deportes"]: #si el deporte ingresado por el usuario está dentro de los valores de la clave "deportes":
+      nombres_completos.append((v["nombres"], v["apellidos"])) #agregar a la lista vacía lo que cumple el condicional 
 
   if nombres_completos:
     return nombres_completos
@@ -76,10 +76,10 @@ def evaluar_deporte(data,deporte):
     return "No se encontraron personas que practiquen el deporte"       
 
 def evaluar_rangos_edad(data, edad_maxima,edad_minima):
-  nombres_completos = []
+  nombres_completos = [] #crear una lista para guardar los nombres completos que cumplen el condicional
   for k,v in data.items():
-    if edad_minima <= v["edad"] <= edad_maxima:
-      nombres_completos.append((v["nombres"], v["apellidos"]))
+    if edad_minima <= v["edad"] <= edad_maxima: #si la edad está dentro del rango de valores del archivo json:
+      nombres_completos.append((v["nombres"], v["apellidos"])) #agregar a la lista vacía lo que cumple el condicional
       
   if nombres_completos:
     return nombres_completos
